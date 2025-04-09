@@ -59,18 +59,15 @@ const EditProduct = () => {
     }
 
     try {
-      const res = await fetch(
-        `http://localhost:5000/api/product/update/${id}`,
-        {
-          method: "PUT",
-          body: formData,
-        }
-      );
+      const res = await fetch(`http://localhost:5000/api/product/${id}`, {
+        method: "PUT",
+        body: formData,
+      });
 
       const data = await res.json();
       if (data.success) {
         alert("Product updated successfully");
-        navigate("/admin");
+        navigate("/products");
       } else {
         alert("Failed to update product");
       }
