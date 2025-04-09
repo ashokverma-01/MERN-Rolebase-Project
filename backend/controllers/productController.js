@@ -1,12 +1,12 @@
 const Product = require("../models/Product");
 const { deleteImage } = require("../config/cloudinary");
-
+const { v4: uuidv4 } = require("uuid");
 // 📌 Create Product
 const createProduct = async (req, res) => {
   try {
-    const { name, description, price, category, stock, barcode } = req.body;
+    const { name, description, price, category, stock } = req.body;
     const file = req.file;
-
+    const barcode = uuidv4();
     const product = await Product.create({
       name,
       description,

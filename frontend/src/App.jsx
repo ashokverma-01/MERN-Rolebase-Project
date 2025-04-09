@@ -11,7 +11,11 @@ import Register from "./pages/Register";
 import UserDashboard from "./pages/Client/UserDashboard";
 import AdminDashboard from "./pages/Admin/AdminDashboard";
 import ProtectedRoute from "./components/ProtectedRoute";
-
+import ProductDetails from "./pages/Admin/ProductDetails";
+import ProductAll from "./pages/Admin/ProductAll";
+import ProductEdit from "./pages/Admin/ProductEdit";
+import ProductAdd from "./pages/Admin/ProductAdd";
+import BarcodeScanner from "./pages/Admin/BarcodeScanner";
 const App = () => {
   return (
     <Router>
@@ -36,6 +40,11 @@ const App = () => {
             </ProtectedRoute>
           }
         />
+        <Route path="/barcode" element={<BarcodeScanner />} />
+        <Route path="/product/:id" element={<ProductDetails />} />
+        <Route path="/product/edit/:id" element={<ProductEdit />} />
+        <Route path="/products" element={<ProductAll />} />
+        <Route path="/add" element={<ProductAdd />} />
       </Routes>
     </Router>
   );

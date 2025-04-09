@@ -12,7 +12,7 @@ const Navbar = () => {
 
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-dark px-4">
-      <Link className="navbar-brand" to="/">
+      <Link className="navbar-brand" to="/barcode">
         MERN App
       </Link>
 
@@ -28,13 +28,8 @@ const Navbar = () => {
       <div className="collapse navbar-collapse" id="navbarNav">
         <ul className="navbar-nav me-auto">
           <li className="nav-item">
-            <Link className="nav-link" to="/user">
-              Home
-            </Link>
-          </li>
-          <li className="nav-item">
-            <Link className="nav-link" to="/admin">
-              About
+            <Link className="nav-link" to="/products">
+              Product List
             </Link>
           </li>
         </ul>
