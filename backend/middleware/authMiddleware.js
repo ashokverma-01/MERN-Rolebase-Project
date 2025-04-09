@@ -4,7 +4,6 @@ const JWT_SECRET = "ashok@123";
 
 exports.protect = async (req, res, next) => {
   const token = req.headers.authorization?.split(" ")[1];
-  console.log("Received Token:", token);
 
   if (!token) {
     return res.status(401).json({ message: "No token, authorization denied" });
@@ -12,7 +11,7 @@ exports.protect = async (req, res, next) => {
 
   try {
     const decoded = jwt.verify(token, JWT_SECRET);
-    console.log("Decoded Token:", decoded);
+
     req.user = await User.findById(decoded.id).select("-password");
     next();
   } catch (err) {

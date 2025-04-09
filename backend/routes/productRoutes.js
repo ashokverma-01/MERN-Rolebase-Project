@@ -6,6 +6,7 @@ const {
   deleteProduct,
   getAllProducts,
   getProductById,
+  getProductByBarcode,
 } = require("../controllers/productController.js");
 const { storage } = require("../config/cloudinary.js");
 const { protect, isAdmin } = require("../middleware/authMiddleware.js");
@@ -16,6 +17,7 @@ const router = express.Router();
 router.post("/create", protect, isAdmin, upload.single("image"), createProduct);
 router.put("/:id", upload.single("image"), updateProduct);
 router.delete("/:id", deleteProduct);
+router.get("/barcode/:code", getProductByBarcode);
 
 router.get("/get", getAllProducts);
 router.get("/:id", getProductById);

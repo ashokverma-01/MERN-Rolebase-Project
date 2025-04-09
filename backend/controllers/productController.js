@@ -4,7 +4,7 @@ const { deleteImage } = require("../config/cloudinary");
 // 📌 Create Product
 const createProduct = async (req, res) => {
   try {
-    const { name, description, price, category, stock } = req.body;
+    const { name, description, price, category, stock, barcode } = req.body;
     const file = req.file;
 
     const product = await Product.create({
@@ -13,6 +13,7 @@ const createProduct = async (req, res) => {
       price,
       category,
       stock,
+      barcode,
       imageUrl: file?.path,
       imageId: file?.filename,
       userId: req.user._id,
@@ -115,6 +116,19 @@ const deleteProduct = async (req, res) => {
     res.status(500).json({ success: false, error: err.message });
   }
 };
+// productController.js
+const getProductByBarcode = async (req, res) => {
+  try {
+    const product = await Product.findOne({ barcode: req.params.code });
+    if (!product)
+      return res
+        .status(404)
+        .json({ success: false, message: "Product not found" });
+    res.status(200).json({ success: true, product });
+  } catch (err) {
+    res.status(500).json({ success: false, error: err.message });
+  }
+};
 
 module.exports = {
   createProduct,
@@ -122,4 +136,5 @@ module.exports = {
   getProductById,
   updateProduct,
   deleteProduct,
+  getProductByBarcode,
 };

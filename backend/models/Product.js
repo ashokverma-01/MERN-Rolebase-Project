@@ -26,6 +26,7 @@ const productSchema = new mongoose.Schema(
     },
     imageUrl: String,
     imageId: String,
+    barcode: String,
     ratings: {
       type: Number,
       default: 0,
@@ -45,6 +46,7 @@ const productSchema = new mongoose.Schema(
         comment: String,
       },
     ],
+
     userId: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "User",

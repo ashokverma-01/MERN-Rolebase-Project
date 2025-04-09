@@ -1,12 +1,12 @@
 import React from "react";
 import Navbar from "../../components/Navbar";
-import ProductList from "../Admin/ProductList";
+import Barcode from "../Admin/BarcodeScanner";
 
 const AdminDashboard = () => {
   return (
     <div>
       <Navbar />
-      <ProductList />
+      <Barcode />
     </div>
   );
 };
